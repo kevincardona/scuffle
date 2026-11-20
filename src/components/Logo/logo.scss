@@ -1,0 +1,14 @@
+.logo {
+  display: inline-flex; gap: 0.18em; font-weight: 800; user-select: none; line-height: 1;
+  &--lg { font-size: clamp(1.2rem, 6.6vw, 2rem); }
+  &--sm { font-size: 0.95rem; gap: 0.14em; }
+  &__tile {
+    display: grid; place-items: center; width: 1.35em; height: 1.45em; border-radius: 0.22em;
+    background: linear-gradient(var(--tile-a), var(--tile-b)); color: var(--tile-text);
+    box-shadow: 0 0.09em 0 var(--tile-edge), 0 0.16em 0.3em var(--shadow);
+    transform: rotate(calc((var(--i) - 3) * 1.8deg));
+    &:nth-child(even) { margin-top: 0.1em; }
+  }
+  &--animate &__tile { animation: logo-bounce 1.1s ease-in-out infinite; animation-delay: calc(var(--i) * 0.09s); }
+}
+@keyframes logo-bounce { 0%, 60%, 100% { translate: 0 0; } 30% { translate: 0 -0.35em; } }

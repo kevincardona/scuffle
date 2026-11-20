@@ -1,20 +1,16 @@
 .word {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 0.5em;
+  display: inline-flex; gap: 3px; animation: word-in 0.4s cubic-bezier(0.2, 1.5, 0.4, 1);
+  &--clickable { cursor: pointer; transition: transform 0.12s; &:hover { transform: translateY(-2px); } }
   &__letter {
-    width: 1.2em;
-    height: 1.2em;
-    line-height: 1em;
-    font-size: 1.2rem;
-    border: solid 1px;
-    background: linear-gradient(to top, darkgray, 1%, rgb(253,235,185));
-    color: black;
-    border-radius: 0.25em;
+    display: grid; place-items: center; width: 1.7rem; height: 1.85rem; font-size: 1.05rem; font-weight: 800;
+    color: var(--tile-text); background: linear-gradient(var(--tile-a), var(--tile-b)); border-radius: 0.3rem;
+    box-shadow: 0 2px 0 var(--tile-edge);
+    &--new { background: linear-gradient(#ffe38a, var(--gold)); }
   }
-
-  &:hover {
-    opacity: 0.6;
-  }
+  &--xs { gap: 2px; }
+  &--xs &__letter { width: calc(1.15rem * var(--word-scale, 1)); height: calc(1.3rem * var(--word-scale, 1)); font-size: calc(0.75rem * var(--word-scale, 1)); border-radius: 0.22rem; box-shadow: 0 1px 0 var(--tile-edge); }
+  &--sm &__letter { width: 1.35rem; height: 1.5rem; font-size: 0.85rem; }
+  &--lg &__letter { width: 2.6rem; height: 2.8rem; font-size: 1.6rem; border-radius: 0.45rem; box-shadow: 0 3px 0 var(--tile-edge); }
+  &--xl &__letter { width: 3.4rem; height: 3.6rem; font-size: 2.1rem; border-radius: 0.55rem; box-shadow: 0 4px 0 var(--tile-edge), 0 8px 14px rgba(0,0,0,.3); }
 }
+@keyframes word-in { from { transform: scale(0.6); opacity: 0; } }

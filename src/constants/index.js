@@ -1,4 +1,4 @@
-module.exports = Object.freeze({
+export default Object.freeze({
   COMMANDS: {
     FLIP: 'FLIP',
     CREATE_WORD: 'CREATE_WORD',
@@ -20,7 +20,9 @@ module.exports = Object.freeze({
     GAME_UPDATE: 'update',
     PLAYER_ACTION: 'player_action',
     INPUT: 'input',
-    DISCONNECT: 'disconnect'
+    DISCONNECT: 'disconnect',
+    WORD_EVENT: 'word_event',
+    GAME_OVER: 'game_over'
   },
   CHAT_MSG_TYPES: {
     SERVER_MESSAGE: 'server_message',
@@ -32,7 +34,7 @@ module.exports = Object.freeze({
   GAME: {
     TILE_COUNT: 150,
     TURN_TIMEOUT: 15000,
-    PAUSED_TIMEOUT: 15000,
+    PAUSED_TIMEOUT: 10000,
     LETTER_DISTRIBUTION: {
       A: 14,
       B: 5,
@@ -63,15 +65,13 @@ module.exports = Object.freeze({
     }
   },
   SERVER_PROMPTS: {
-    RULES: 
-      `Object: Be the player with the most letters by the end of the game
-        This game starts with 144 letter tiles facedown in the center.
-        HOW TO PLAY
-        Each player takes turns flipping 1 letter at a time in the center. Whenever any player sees a word that can be made of 3 or more flipped letters they must call it out and collect their word. At any time the player can transform their word into a longer (and different) one given they use all of the letters AND at least one from the center
-        STEALING LETTERS
-        A word can be stolen from another player at any time provided that word can be turned into a different word using ALL of the letters + at least 1 letter from the center
-        WINNING
-        When all of the letters from the center have been flipped and nobody has any steals/words to create using the center letters then the game is over. The player with the most letters wins the game.
-      `,
+    RULES:
+      `GOAL: finish with the most letters in your words.
+        1. On your turn, press FLIP to turn over one letter in the middle (you have 15 seconds).
+        2. Spot a word of 3+ letters in the middle? Press CREATE WORD and type it before anyone else. You take those letters and the word is yours.
+        3. Make your word longer: use ALL its letters plus at least 1 from the middle to build a different word (CAT + S = CATS).
+        4. Steal: click another player's word and rebuild it the same way (CAT + R = CART). It must be a truly different word: no just adding S, ED or ING.
+        5. When every letter is flipped and nobody can make or steal anything, everyone presses FINISHED. Most letters wins.
+        Chat tips: /return <word> puts one of your words back, /reset restarts (private rooms), /override <word> accepts a word the dictionary missed (private rooms).`,
   },
 })

@@ -8,6 +8,11 @@ class Player {
     this.score = 0
     this.active = true
     this.isDone = false
+    this.bot = false
+    this.connected = true
+    this.key = null
+    this.lockCooldownUntil = 0
+    this.lastWordAt = 0
   }
 
   getPlayerData() {
@@ -17,12 +22,10 @@ class Player {
       words: this.words,
       score: this.score,
       active: this.active,
+      bot: this.bot,
+      connected: this.connected,
+      lockCooldown: Math.max(0, Math.ceil((this.lockCooldownUntil - Date.now()) / 1000)),
     }
-  }
-
-  resetPlayer() {
-    this.words = []
-    this.score = 0
   }
 
   addWord(word) {
@@ -31,7 +34,9 @@ class Player {
   }
 
   removeWord(word) {
-    this.words.splice(this.words.indexOf(word), 1)
+    const i = this.words.indexOf(word)
+    if (i < 0) return
+    this.words.splice(i, 1)
     this.score -= word.length
   }
 
@@ -40,4 +45,4 @@ class Player {
   }
 }
 
-module.exports = Player
+export default Player

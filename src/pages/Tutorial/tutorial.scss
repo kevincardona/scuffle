@@ -1,0 +1,24 @@
+#tutorial { position: fixed; inset: 0; display: flex; flex-direction: column; gap: 0.75rem; padding: 0.6rem 0.8rem 1rem; max-width: 40rem; margin: 0 auto; overflow-y: auto; }
+.tut__top { display: flex; align-items: center; gap: 0.6rem; }
+.tut__title { flex: 1; font-weight: 800; }
+.tut__logo { padding: 0.2rem; }
+.tut__progress { display: flex; gap: 0.3rem; i { flex: 1; height: 5px; border-radius: 99px; background: var(--border); &.done { background: var(--green); } &.now { background: var(--accent); } } }
+.tut__banner { display: flex; flex-direction: column; gap: 0.15rem; padding: 0.8rem 1rem; background: var(--accent-soft); border: 1px solid var(--border); border-left: 6px solid var(--accent); border-radius: var(--radius); strong { font-size: 1.15rem; } span { color: var(--muted); font-size: 0.9rem; } }
+.tut__table { position: relative; min-height: 9rem; display: flex; }
+.tut__letters { flex: 1; display: flex; flex-wrap: wrap; align-content: center; justify-content: center; gap: 0.4rem; padding: 1.1rem; background: radial-gradient(ellipse at 50% 30%, var(--felt) 0%, var(--felt-edge) 120%); border-radius: var(--radius); box-shadow: inset 0 0 0 4px var(--felt-edge), inset 0 8px 30px rgba(0, 0, 0, 0.3); }
+.tut__empty { margin: 0; color: #ffffffaa; font-weight: 600; }
+.tut__players { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.tut__player { padding: 0.6rem 0.8rem; background: var(--surface); border: 1px solid var(--border); border-radius: 0.9rem; min-height: 4.2rem; &--me { border-left: 5px solid var(--accent); } small { color: var(--muted); } }
+.tut__words { display: flex; flex-wrap: wrap; gap: 0.4rem 0.8rem; margin-top: 0.4rem; }
+.tut__pulse { animation: tut-pulse 1.2s ease-in-out infinite; filter: drop-shadow(0 0 6px var(--gold)); }
+@keyframes tut-pulse { 50% { transform: scale(1.12); } }
+.tut__form { padding: 0.8rem; background: var(--surface); border: 2px solid var(--accent); border-radius: var(--radius); label { display: block; margin-bottom: 0.5rem; font-weight: 700; font-size: 0.9rem; } .input { text-align: center; font-weight: 800; letter-spacing: 0.2em; font-size: 1.3rem; } &--shake { animation: tut-shake 0.4s; } }
+.tut__row { display: flex; gap: 0.5rem; }
+.tut__hint { margin: 0.6rem 0 0; font-size: 0.9rem; font-weight: 600; color: var(--gold); }
+@keyframes tut-shake { 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+.tut__actions { margin-top: auto; }
+.tut__flip { animation: tut-pulse-btn 1.6s ease-in-out infinite; }
+@keyframes tut-pulse-btn { 50% { box-shadow: 0 4px 0 var(--accent-edge), 0 0 0 7px color-mix(in srgb, var(--accent) 28%, transparent); } }
+.tut__done { margin: auto; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.8rem; p { max-width: 22rem; color: var(--muted); line-height: 1.5; } }
+.tut__trophy { font-size: 4rem; animation: tut-pulse 1.4s ease-in-out infinite; }
+.tut__cta { display: flex; gap: 0.7rem; flex-wrap: wrap; justify-content: center; }

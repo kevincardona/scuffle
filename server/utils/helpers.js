@@ -11,7 +11,7 @@ function shuffle(array) {
 }
 
 const letterCountMap = (word) => {
-  let letters = {};
+  let letters = Object.create(null);
   for(let i = 0; i < word.length; i++) {
     const currentLetter = word.charAt(i).toUpperCase()
     if (!letters[currentLetter])
@@ -67,10 +67,4 @@ const checkCenterForWord = (word, flipped) => {
 }
 
 
-module.exports = {
-    shuffle: shuffle,
-    letterCountMap: letterCountMap,
-    letterMapToWord: letterMapToWord,
-    checkWordContainsOther: checkWordContainsOther,
-    checkCenterForWord: checkCenterForWord
-}
+export { shuffle, letterCountMap, letterMapToWord, checkWordContainsOther, checkCenterForWord }
