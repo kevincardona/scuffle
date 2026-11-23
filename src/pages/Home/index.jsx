@@ -22,6 +22,9 @@ const Home = () => (
       <Rules />
       <Link to="/play" className="btn btn--green btn--lg home__cta">Let's play</Link>
     </section>
+    <footer className="home__credit">
+      Made by <a href="https://kevincardona.net">Kevin Cardona</a>
+    </footer>
   </div>
 );
 export default Home;
