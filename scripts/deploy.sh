@@ -8,9 +8,9 @@ DIR=/opt/scuffle
 TMP=$(mktemp -d)
 trap 'rm -rf "$TMP"' EXIT
 
-echo "==> tests + build"
+echo "==> build + tests"
+npm run build   # first: the smoke tests load the built app from build/
 npm test
-npm run build
 
 echo "==> production dependencies"
 cp package.json package-lock.json "$TMP/"
